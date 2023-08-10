@@ -6,13 +6,13 @@ require('dotenv').config();
 
 // middleware
 const corsOptions = {
-    origin: 'https://mern-deploy-fe.onrender.com' // frontend URI (ReactJS)
+    origin: process.env.FRONTEND_URI // frontend URI (ReactJS)
 }
 app.use(express.json());
 app.use(cors(corsOptions));
 
 // connect MongoDB
-mongoose.connect('mongodb+srv://bisrat:sd39BlDj0x4xxWfQ@cluster0.rgppm.mongodb.net/?retryWrites=true&w=majority').then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     const PORT = process.env.PORT || 8000
     app.listen(PORT, () => {
         console.log(`App is Listening on PORT ${PORT}`);

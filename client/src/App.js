@@ -5,7 +5,8 @@ function App() {
 
   // Fetching message from backend on mount
   useEffect(() => {
-    fetch("https://mern-deploy-ofsr.onrender.com/")
+    console.log('fe: ', {fe: process.env.FRONTEND_URI})
+    fetch("http://localhost:4000")
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
