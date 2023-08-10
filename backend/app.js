@@ -11,7 +11,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
-// connect MongoDB
+/* connect MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     const PORT = process.env.PORT || 8000
     app.listen(PORT, () => {
@@ -20,8 +20,10 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 }).catch(err => {
     console.log(err);
 });
+*/
+require("./routes/main.routes")(app);
 
-// route
-app.get("/", (req, res) => {
-    res.status(201).json({message: "Connected to Backend!"});
-});
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => {
+    console.log(`App is Listening on PORT ${PORT}`);
+})
