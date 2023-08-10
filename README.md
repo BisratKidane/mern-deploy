@@ -14,3 +14,6 @@ backend: https://mern-deploy-ofsr.onrender.com/
 repository in github is mern-deploy
 
 to push to github addd ssh key of your machine
+
+mongodb
+jEbUgRWx4t6a6mZB

@@ -5,8 +5,7 @@ function App() {
 
   // Fetching message from backend on mount
   useEffect(() => {
-    console.log('fe: ', {fe: process.env.FRONTEND_URI})
-    fetch("http://localhost:4000")
+    fetch(`${process.env.REACT_APP_FRONTEND_URI}`)
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
