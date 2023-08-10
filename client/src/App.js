@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react";
+import DataService from "./services/remote.service"
 
 function App() {
   const [message, setMessage] = useState("");
 
-  // Fetching message from backend on mount
   useEffect(() => {
-    console.log('fe: ', {fe: process.env.FRONTEND_URI})
-    fetch("http://localhost:4000")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
+    retrieveData();
   }, []);
+
+  const retrieveData = () => {
+    DataService.getData()
+    .then((res) => {
+      console.log({res})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   return (
     <div className="App">
-      <h1>{message}</h1>
+      <h1>Fetched Data</h1>
+      <p>
+        {message}
+      </p>
     </div>
   );
 }
