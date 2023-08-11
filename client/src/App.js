@@ -5,9 +5,13 @@ function App() {
 
   // Fetching message from backend on mount
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_FRONTEND_URI}`)
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
+    fetch(`${process.env.REACT_APP_BE_URI}`)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          setMessage(data.message)
+        });
   }, []);
 
   return (
