@@ -1,31 +1,43 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import {Routes, Route, Link} from "react-router-dom";
+
+import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import Persons from "./Components/Person/Person.component";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  // Fetching message from backend on mount
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_BE_URI}`,
-        {
-            method: "GET",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          setMessage(data.message)
-        })
-        .catch((error) => console.error(error)); // Handle errors
-  }, []);
-
   return (
-    <div className="App">
-      <h1>{message}</h1>
-    </div>
+      <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1 }}>
+              <AppBar position="static">
+                  <Toolbar>
+                      <IconButton
+                          size="large"
+                          edge="start"
+                          color="inherit"
+                          aria-label="menu"
+                          sx={{ mr: 2 }}
+                      >
+                          <MenuIcon />
+                      </IconButton>
+                      <Button to="/persons" component={Link} vaiant="text">
+                          Family Memebers
+                      </Button>
+                      <Button color="inherit">Login</Button>
+                  </Toolbar>
+              </AppBar>
+          </Box>
+          <Routes>
+              <Route path="/" element={<Persons />} />
+              <Route path="/persons" element={<Persons />} />
+              <Route path="/persons/:id" element={<Persons />} />
+          </Routes>
+      </Box>
   );
 }
 
