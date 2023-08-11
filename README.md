@@ -11,9 +11,9 @@ available site:
 front end: https://mern-deploy-fe.onrender.com/
 backend: https://mern-deploy-ofsr.onrender.com/
 
+example used for routing in be and fe
+https://www.bezkoder.com/react-node-express-mongodb-mern-stack/#Nodejs_Express_MongoDB_Back-end
+
 repository in github is mern-deploy
 
 to push to github addd ssh key of your machine
-
-mongodb
-jEbUgRWx4t6a6mZB
