@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
 
 import Persons from "./Components/Person/Person.component";
 
@@ -32,11 +33,13 @@ function App() {
                   </Toolbar>
               </AppBar>
           </Box>
-          <Routes>
-              <Route path="/" element={<Persons />} />
-              <Route path="/persons" element={<Persons />} />
-              <Route path="/persons/:id" element={<Persons />} />
-          </Routes>
+          <Container maxWidth="sm">
+              <Routes>
+                  <Route path="/" element={<Persons />} />
+                  <Route path="/persons" element={<Persons />} />
+                  <Route path="/persons/:id" element={<Persons />} />
+              </Routes>
+          </Container>
       </Box>
   );
 }

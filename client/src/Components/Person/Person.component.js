@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
 
 import FamilyService from "../../Services/Person.service";
 
@@ -28,17 +29,17 @@ const Persons = () => {
     };
 
     return (
-        <Container maxWidth="md">
+        <Stack direction="row" spacing={1}>
             {persons && persons.map((person, index) => (
-                <Stack direction="row" spacing={1}>
-                    <Chip
-                        label={person.name}
-                        variant="outlined"
-                        onClick={handleClick}
-                    />
-                </Stack>
+                <Chip
+                    key={person.id}
+                    label={person.name}
+                    variant="outlined"
+                    avatar={<Avatar alt="Natacha" src={person.thumbnail} />}
+                    onClick={handleClick}
+                />
             ))}
-        </Container>
+        </Stack>
     )
 }
 
