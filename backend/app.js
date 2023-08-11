@@ -5,11 +5,14 @@ const cors = require('cors');
 require('dotenv').config();
 
 // middleware
-const corsOptions = {
-    origin: process.env.REACT_APP_FRONTEND_URI
-}
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
+app.use((req, res, next) => {
+    res.header( "Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT");
+    res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
 
 /* connect MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
@@ -23,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 */
 require("./routes/main.routes")(app);
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`App is Listening on PORT ${PORT}`);
 })
