@@ -5,13 +5,21 @@ function App() {
 
   // Fetching message from backend on mount
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BE_URI}`)
+    fetch(`${process.env.REACT_APP_BE_URI}`,
+        {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
         .then(function (response) {
           return response.json();
         })
         .then(function (data) {
           setMessage(data.message)
-        });
+        })
+        .catch((error) => console.error(error)); // Handle errors
   }, []);
 
   return (
